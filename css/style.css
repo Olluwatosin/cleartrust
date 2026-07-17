@@ -321,3 +321,90 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:48px 0 40p
   .steps{grid-template-columns:1fr;}
   .hero h1{font-size:32px;}
 }
+
+/* ============================================================
+   MOTION — subtle, on-brand. All gated by html.js (added by an
+   inline head script) so content is always visible without JS,
+   and fully disabled under prefers-reduced-motion.
+   ============================================================ */
+
+/* Reveal targets — hidden at first paint only when JS is on */
+html.js .mv-card,
+html.js .line-card,
+html.js .step,
+html.js .why-card,
+html.js .service-card,
+html.js .detail-photo,
+html.js .side-card,
+html.js .contact-info,
+html.js .hero-panel,
+html.js .hero-logo,
+html.js .hero .eyebrow,
+html.js .hero h1,
+html.js .hero p.lead,
+html.js .hero-actions,
+html.js .hero-note{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .6s cubic-bezier(.16,.84,.44,1),transform .6s cubic-bezier(.16,.84,.44,1);
+  transition-delay:calc(var(--i,0) * 70ms);
+  will-change:opacity,transform;
+}
+html.js .mv-card.in,
+html.js .line-card.in,
+html.js .step.in,
+html.js .why-card.in,
+html.js .service-card.in,
+html.js .detail-photo.in,
+html.js .side-card.in,
+html.js .contact-info.in,
+html.js .hero-panel.in,
+html.js .hero-logo.in,
+html.js .hero .eyebrow.in,
+html.js .hero h1.in,
+html.js .hero p.lead.in,
+html.js .hero-actions.in,
+html.js .hero-note.in{
+  opacity:1;
+  transform:none;
+}
+
+/* Set 4 — header condenses on scroll */
+header nav{transition:padding .25s ease;}
+header{transition:background .25s ease,box-shadow .25s ease;}
+header.scrolled{background:rgba(7,26,51,.98);box-shadow:0 6px 24px rgba(4,10,22,.4);}
+header.scrolled nav{padding:9px 0;}
+
+/* Set 2 — soft pulse on the live status dots */
+@keyframes pulse-live{
+  0%{box-shadow:0 0 0 0 rgba(62,207,142,.5);}
+  70%{box-shadow:0 0 0 7px rgba(62,207,142,0);}
+  100%{box-shadow:0 0 0 0 rgba(62,207,142,0);}
+}
+html.js .status-live{animation:pulse-live 2.6s ease-out infinite;}
+
+/* Set 3 — the hero checkmark draws itself in on load */
+@keyframes draw-check{to{stroke-dashoffset:0;}}
+html.js .hero-note svg path{
+  stroke-dasharray:24;stroke-dashoffset:24;
+  animation:draw-check .55s ease forwards .55s;
+}
+
+/* Set 5 — animated check in the form success message */
+.form-check{width:20px;height:20px;flex-shrink:0;vertical-align:-4px;margin-right:8px;display:inline-block;}
+.form-check path{stroke-dasharray:24;stroke-dashoffset:24;animation:draw-check .5s ease forwards .1s;}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  html.js .mv-card,html.js .line-card,html.js .step,html.js .why-card,
+  html.js .service-card,html.js .detail-photo,html.js .side-card,
+  html.js .contact-info,html.js .hero-panel,html.js .hero-logo,
+  html.js .hero .eyebrow,html.js .hero h1,html.js .hero p.lead,
+  html.js .hero-actions,html.js .hero-note{opacity:1 !important;transform:none !important;}
+  html.js .hero-note svg path,.form-check path{stroke-dashoffset:0 !important;}
+}
