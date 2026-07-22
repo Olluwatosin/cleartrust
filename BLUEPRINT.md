@@ -12,15 +12,20 @@ cleartrust/
 ├── service-background-screening.html
 ├── service-immigration-compliance.html
 ├── service-media-consultancy.html
+├── faq.html                                FAQ — native <details> accordion, drafted from site copy (pricing = placeholder)
+├── privacy.html                            Privacy Policy — NDPA-aware draft, [PLACEHOLDER] markers to complete, noindex
+├── sitemap.xml                             Lists indexable pages (privacy.html excluded)
+├── robots.txt                              Allows all except /privacy.html; points to sitemap
 ├── css/
 │   └── style.css                           Single shared stylesheet — all pages link to this
 ├── js/
-│   └── main.js                             Shared JS — mobile menu toggle + contact form AJAX submission
+│   └── main.js                             Shared JS — mobile menu, scroll-reveal, header-on-scroll, form AJAX, WhatsApp button
 ├── assets/
 │   ├── fonts/
 │   │   └── manrope-variable.woff2          Manrope variable font (200–800), self-hosted, latin subset
 │   └── images/
 │       ├── logo1-transparent.png           Logo, background removed for use on dark nav/hero
+│       ├── og-image.png                    1200×630 social share preview (rendered from logo + palette)
 │       ├── hero-handshake.jpg              Homepage hero background (Unsplash, self-hosted)
 │       ├── primary-source-verification.jpg Service imagery — PSV card, detail page, why-us background
 │       ├── background-screening.jpg        Service imagery — screening card + detail page
@@ -28,6 +33,8 @@ cleartrust/
 │       └── consultancy-meeting.jpg         Service imagery — media consultancy card + detail page
 └── BLUEPRINT.md                            This file
 ```
+
+**Absolute-URL note:** OG tags, canonical links, JSON-LD, and `sitemap.xml`/`robots.txt` all use the base URL `https://olluwatosin.github.io/cleartrust`. If you move to a custom domain, find-and-replace that base across those files.
 
 No `package.json`, no bundler. Open `index.html` directly in a browser, or use VS Code's "Live Server" extension for auto-reload while editing.
 
@@ -85,7 +92,10 @@ Rationale: this is a trust/verification company. Overclaiming delivery capabilit
 - ~~**Hero background image is hotlinked.**~~ **Done (July 2026):** all imagery is self-hosted in `assets/images/`. The font is self-hosted too — no CDN or external requests anywhere on the site.
 - **Image licensing — confirmed clear (July 2026).** `primary-source-verification.jpg`, `background-screening.jpg`, and `consultancy-meeting.jpg` are licensed (owner confirmed). `hero-handshake.jpg` and `immigration-travel.jpg` are Unsplash (free license, no attribution required). If higher-resolution versions of the licensed images are available from the license account, swapping them in would sharpen the service cards on large screens (current files are 600–1000px wide).
 - **Immigration Compliance and Media Consultancy pages are intentionally generic.** No specifics were available on what these services actually deliver in practice, so the copy frames both as "scoped case-by-case" rather than listing fixed capabilities. Do not add specific claims (turnaround times, named processes, guarantees) until the actual service delivery is defined — otherwise this repeats the exact overclaiming problem the rest of the site is designed to avoid.
-- **Business email.** Contact info across the site currently points to a personal Gmail. Swap for a dedicated business address before this goes live to real prospects (update it in `index.html` contact section and `CONTACT_EMAIL` in `js/main.js`).
+- **Business email.** Contact info across the site currently points to a personal Gmail. Swap for a dedicated business address before this goes live to real prospects (update it in `index.html` contact section, `CONTACT_EMAIL` in `js/main.js`, the `privacy.html` placeholders, and the JSON-LD in `index.html`).
+- **WhatsApp button — built but off.** A floating click-to-chat button is wired in `js/main.js` but `WHATSAPP_NUMBER` is intentionally left blank so no button pointing at a wrong number can ship. Set it to a real number in international digits-only format (e.g. `2348012345678`) to switch it on — that's the only change needed.
+- **Privacy Policy is a draft.** `privacy.html` is NDPA-aware but every `[PLACEHOLDER]` (legal name, RC number, address, retention period, data-request contact, cookies/analytics statement) must be completed, and ideally reviewed by a data-protection adviser, before relying on it with real clients. It's set to `noindex` until finished.
+- **FAQ pricing placeholder.** `faq.html` has one `[PLACEHOLDER]` — the pricing answer. Everything else is drafted from real site copy.
 - **Non-compete / IP question** — noted as checked and clear per your confirmation. Worth a final gut-check once you're actively signing clients, given the service taxonomy overlaps with a former employer's.
 
 ## 6. Suggested next steps (in rough priority order)
@@ -93,7 +103,7 @@ Rationale: this is a trust/verification company. Overclaiming delivery capabilit
 1. ~~Wire up the contact form to something real.~~ Done — FormSubmit AJAX (see §5; needs one-time email activation).
 2. Get a business email + domain, replace the Gmail references site-wide.
 3. ~~Self-host the hero image and any other external assets.~~ Done — images and font are all local.
-4. Deploy somewhere real (GitHub Pages, Netlify, or Vercel — the repo is already on GitHub, so Pages is the shortest path).
+4. Deploy somewhere real (GitHub Pages, Netlify, or Vercel — the repo is already on GitHub, so Pages is the shortest path). After deploying, test the share preview by pasting the URL into WhatsApp/LinkedIn, and submit `sitemap.xml` in Google Search Console.
 5. If you want to stop duplicating the header/footer across 6 files, this is small enough to still convert to a static site generator (11ty, Astro) without much pain — worth doing before you add a 10th page, not after.
 6. Once Immigration Compliance and Media Consultancy scope is real, rewrite those two pages with actual specifics.
 7. Longer term: the site is just the front door. The actual verification request pipeline (intake → assignment → status tracking → report delivery) is a separate system this site should eventually connect to via that contact form / a proper request form — worth a real architecture pass when you're ready to build it, not before.
