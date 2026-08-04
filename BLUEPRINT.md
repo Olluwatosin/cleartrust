@@ -1,6 +1,8 @@
 # ClearTrust — Project Blueprint
 
-Static marketing site for ClearTrust, a Nigeria-based (pan-African positioning) primary source verification company. No build step, no framework — plain HTML/CSS/JS, meant to be easy to pick up and extend in VS Code.
+Static marketing site for ClearTrust, a Nigeria-headquartered primary source verification company operating across nine African countries (Nigeria, Kenya, Uganda, Ghana, Tanzania, Gambia, South Africa, Cameroon, Benin). No build step, no framework — plain HTML/CSS/JS, meant to be easy to pick up and extend in VS Code.
+
+**Operating footprint (owner-confirmed July 2026):** the homepage presents all nine countries as *active* operations, not expansion targets — the "Where we operate" section (`index.html`, class `.coverage`) renders an Africa SVG map with those countries highlighted (Nigeria as home base). The country list lives both in that section's `.country-list` and in the JSON-LD `areaServed` array. If the footprint changes, update both, plus the map highlight classes (`ct-hl` / `ct-hq`) in the inline SVG. The map is derived from the simplemaps.com world map (MIT License) — the attribution comment above the inline `<svg>` must stay.
 
 ## 1. Folder structure
 
@@ -75,7 +77,8 @@ This is the thing most likely to drift and cause a problem if the site is edited
 | Check | Status | Delivery mechanism |
 |---|---|---|
 | Employment verification | 🟢 Live | Direct source (contact employer/HR) |
-| Education verification | 🟢 Live | Direct source (contact institution/exam body) |
+| Education / academic credentials | 🟢 Live | Direct source (contact institution/exam body) |
+| Professional license verification | 🟢 Live | Direct source (issuing/licensing authority) — added July 2026 per owner confirmation |
 | Goodstanding / CAC check | 🟢 Live | Direct source (CAC) |
 | Digital & media footprint | 🟢 Live | Direct source (OSINT review) |
 | Criminal record check | 🟡 Managed application | Nigeria Police Force Character Certificate — manual, not instant |

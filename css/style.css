@@ -133,6 +133,7 @@ header.nav-open .mobile-menu{
 .hero h1 span{color:var(--blue-light);}
 .hero p.lead{font-size:18.5px;color:rgba(255,255,255,.84);max-width:530px;margin-bottom:34px;line-height:1.6;}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px;}
+.hero-tagline{color:var(--blue-light);font-weight:700;font-size:16px;margin:-16px 0 34px;}
 .hero-note{font-size:13.5px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:8px;}
 .hero-panel{
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
@@ -302,8 +303,9 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:48px 0 40p
 .footer-bottom{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;text-align:center;color:rgba(255,255,255,.4);}
 
 @media (max-width:880px){
-  .hero-grid,.contact-grid,.detail-grid,.mv-grid,.line-grid{grid-template-columns:1fr;}
+  .hero-grid,.contact-grid,.detail-grid,.mv-grid,.line-grid,.coverage-grid{grid-template-columns:1fr;}
   .hero-panel{order:-1;}
+  .coverage-map{order:-1;}
   .card-grid{grid-template-columns:1fr;}
   .steps{grid-template-columns:1fr 1fr;}
   .why-grid{grid-template-columns:1fr;}
@@ -334,6 +336,32 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.6);padding:48px 0 40p
 .contact-grid>*,.field{min-width:0;}
 .field input,.field select,.field textarea{width:100%;min-width:0;}
 .contact-line{word-break:break-word;}
+
+/* WHERE WE OPERATE (coverage map) */
+.coverage{
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);
+  color:var(--white);overflow:hidden;
+}
+.coverage .eyebrow{color:var(--blue-light);}
+.coverage h2{color:var(--white);}
+.coverage .section-sub{color:rgba(255,255,255,.68);}
+.coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.coverage-text p{color:rgba(255,255,255,.72);font-size:16.5px;max-width:440px;margin-bottom:26px;}
+.country-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px;}
+.country-list li{
+  display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
+  color:rgba(255,255,255,.9);background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:8px 14px;
+}
+.country-list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.country-list li.ct-home{background:rgba(92,194,240,.16);border-color:rgba(92,194,240,.5);color:var(--white);}
+.country-list li.ct-home::before{background:var(--blue-light);box-shadow:0 0 0 3px rgba(92,194,240,.25);}
+.coverage-map{display:flex;justify-content:center;}
+.africa-map{width:100%;max-width:500px;height:auto;overflow:visible;}
+.africa-map .ct-base{fill:rgba(255,255,255,.08);stroke:rgba(255,255,255,.16);stroke-width:.4;}
+.africa-map .ct-hl{fill:var(--blue);stroke:rgba(255,255,255,.35);stroke-width:.5;transition:fill .2s ease;}
+.africa-map .ct-hq{fill:var(--blue-light);}
+.africa-map .ct-hl:hover{fill:var(--blue-light);cursor:default;}
 
 /* SKIP LINK (accessibility) */
 .skip-link{
@@ -482,4 +510,12 @@ html.js .hero-note svg path{
   html.js .hero .eyebrow,html.js .hero h1,html.js .hero p.lead,
   html.js .hero-actions,html.js .hero-note{opacity:1 !important;transform:none !important;}
   html.js .hero-note svg path,.form-check path{stroke-dashoffset:0 !important;}
+}
+
+/* Coverage grid collapse — placed after the .coverage-grid base rule so it
+   wins on mobile (the earlier 880px block is overridden by source order) */
+@media (max-width:880px){
+  .coverage-grid{grid-template-columns:1fr;}
+  .coverage-map{order:-1;margin-bottom:8px;}
+  .africa-map{max-width:420px;}
 }
