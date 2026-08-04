@@ -46,8 +46,8 @@ No `package.json`, no bundler. Open `index.html` directly in a browser, or use V
 |---|---|---|
 | Home | `index.html` | Hero (background photo + logo), mission/vision, 4-service teaser grid, how-it-works, why-us, contact form |
 | Services overview | `services.html` | All 4 service lines with short descriptions + "how delivery works" explainer |
-| Primary Source Verification | `service-primary-source-verification.html` | Employment, education, goodstanding/CAC — direct-source checks |
-| Background Screening / Verification | `service-background-screening.html` | Criminal record, birth certificate, logbook (managed applications) + digital footprint (direct source) |
+| Primary Source Verification | `service-primary-source-verification.html` | Employment, education, goodstanding — direct-source checks |
+| Background Screening / Verification | `service-background-screening.html` | Criminal record, birth certificate, driver's licence (managed applications) + digital footprint (direct source) |
 | Immigration Compliance Service | `service-immigration-compliance.html` | Document verification for visa/work-permit cases — copy is intentionally general, see §5 |
 | Media Consultancy | `service-media-consultancy.html` | Reputation/media advisory — copy is intentionally general, see §5 |
 
@@ -79,11 +79,11 @@ This is the thing most likely to drift and cause a problem if the site is edited
 | Employment verification | 🟢 Live | Direct source (contact employer/HR) |
 | Education / academic credentials | 🟢 Live | Direct source (contact institution/exam body) |
 | Professional license verification | 🟢 Live | Direct source (issuing/licensing authority) — added July 2026 per owner confirmation |
-| Goodstanding / CAC check | 🟢 Live | Direct source (CAC) |
+| Goodstanding check | 🟢 Live | Direct source (CAC) |
 | Digital & media footprint | 🟢 Live | Direct source (OSINT review) |
 | Criminal record check | 🟡 Managed application | Nigeria Police Force Character Certificate — manual, not instant |
 | Birth certificate verification | 🟡 Managed application | National Population Commission — manual |
-| Vehicle logbook check | 🟡 Managed application | FRSC / relevant registries — manual |
+| Driver's licence verification | 🟡 Managed application | FRSC (Federal Road Safety Corps) — manual |
 | Health record verification | ⚪ In development | No established channel in-market — do not present as live |
 | Credit score verification | ⚪ In development | Requires a licensed credit bureau subscription (CRC/CreditRegistry/FirstCentral) — do not offer until licensed |
 
