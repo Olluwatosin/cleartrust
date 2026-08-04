@@ -1,8 +1,8 @@
 # ClearTrust — Project Blueprint
 
-Static marketing site for ClearTrust, a Nigeria-headquartered primary source verification company operating across nine African countries (Nigeria, Kenya, Uganda, Ghana, Tanzania, Gambia, South Africa, Cameroon, Benin). No build step, no framework — plain HTML/CSS/JS, meant to be easy to pick up and extend in VS Code.
+Static marketing site for ClearTrust, a Nigeria-headquartered primary source verification company operating across sixteen African countries (Nigeria, Kenya, Uganda, Ghana, Tanzania, Gambia, South Africa, Cameroon, Benin, Togo, Ethiopia, Niger, Somalia, Zimbabwe, Zambia, Senegal). No build step, no framework — plain HTML/CSS/JS, meant to be easy to pick up and extend in VS Code.
 
-**Operating footprint (owner-confirmed July 2026):** the homepage presents all nine countries as *active* operations, not expansion targets — the "Where we operate" section (`index.html`, class `.coverage`) renders an Africa SVG map with those countries highlighted (Nigeria as home base). The country list lives both in that section's `.country-list` and in the JSON-LD `areaServed` array. If the footprint changes, update both, plus the map highlight classes (`ct-hl` / `ct-hq`) in the inline SVG. The map is derived from the simplemaps.com world map (MIT License) — the attribution comment above the inline `<svg>` must stay.
+**Operating footprint (owner-confirmed July 2026):** the homepage presents all sixteen countries as *active* operations, not expansion targets — the "Where we operate" section (`index.html`, class `.coverage`) renders an Africa SVG map with those countries highlighted (Nigeria as home base). The country list lives both in that section's `.country-list` and in the JSON-LD `areaServed` array. If the footprint changes, update both, plus the map highlight classes (`ct-hl` / `ct-hq`) in the inline SVG. The map is derived from the simplemaps.com world map (MIT License) — the attribution comment above the inline `<svg>` must stay.
 
 ## 1. Folder structure
 
