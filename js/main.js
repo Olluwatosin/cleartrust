@@ -28,6 +28,25 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
+// Africa map — cursor-following tooltip showing each country's name
+(function () {
+  var map = document.querySelector('.africa-map');
+  if (!map) return;
+  var tip = document.createElement('div');
+  tip.className = 'map-tip';
+  tip.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(tip);
+  map.addEventListener('mousemove', function (e) {
+    var name = e.target && e.target.getAttribute ? e.target.getAttribute('data-name') : null;
+    if (!name) { tip.classList.remove('show'); return; }
+    tip.textContent = name;
+    tip.style.left = e.clientX + 'px';
+    tip.style.top = e.clientY + 'px';
+    tip.classList.add('show');
+  });
+  map.addEventListener('mouseleave', function () { tip.classList.remove('show'); });
+})();
+
 // Mobile navigation
 const header = document.querySelector('header');
 const menuToggle = document.querySelector('.menu-toggle');
